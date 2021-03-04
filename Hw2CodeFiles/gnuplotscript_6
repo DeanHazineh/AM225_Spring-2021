@@ -1,0 +1,78 @@
+
+usefile = 'Data/data_6p'
+
+# Plot Gengs Method on Two Component Oscillator
+set terminal png size 2000,1000 font 'Helvetica,30"
+set output 'Figures/figure_6a.png'
+set title 'Two Component System solved via Geng IRK5'
+set xlabel 'time'
+set ylabel 'y'
+set key left bottom title 'Legend' box 3
+plot usefile i 0 u 1:2 w p lt rgb "red" pt 1 ps 2 lw 1 t 'y1 irk5',\
+     usefile i 0 u 1:3 w p pt 1 lt rgb "blue" ps 2 lw 1 t 'y2 irk5'
+
+reset
+# plot Errors
+set terminal png size 2000,1000 font 'Helvetica,30"
+set output 'Figures/figure_6b.png'
+set xlabel 'time'
+set ylabel 'Error'
+set key left bottom title 'Legend' box 3
+plot usefile i 0 u 1:4 w p lt rgb "red" pt 2 ps 2 lw 1 t 'y1 irk5',\
+     usefile i 0 u 1:5 w p pt 2 lt rgb "blue" ps 2 lw 1 t 'y2 irk5'
+
+reset
+# Make work precision plot 
+set terminal png size 2000,1000 font 'Helvetica,30"
+set output 'Figures/figure_6c.png'
+set logscale xy
+set xrange[*:] reverse
+set format y "%.2t*10^%+03T"
+set format x "%.1t*10^%+03T"
+set xlabel 'Precision'
+set ylabel 'Function Evaluations'
+set key right bottom title 'Legend' box 3
+plot usefile i 1 u 2:1 w p pt 2 ps 5 t 'irk5 two component osc.',\
+	 'Data/rk4.conv_dat' u 2:1 w p pt 3 ps 5 t 'rk4 reference'
+
+reset
+# Simulate the Galaxe ODE - Plot 2d color contour
+set terminal png size 1250,1000 font 'Helvetica,30"
+set output 'Figures/figure_6d.png'
+set palette rgbformulae 3,2,2
+set palette model HSV
+set xlabel 'x'
+set ylabel 'y'
+set cblabel 'z'
+unset key
+plot usefile i 2 u 6:7:8 palette
+
+reset 
+# Simulate the Galaxe ODE - Plot with 3d 
+set terminal png size 1250,1000 font 'Helvetica,30"
+set output 'Figures/figure_6e.png'
+set xlabel 'x'
+set ylabel 'y'
+set zlabel 'z'
+splot usefile i 2 u 6:7:8 w l lw 2
+
+reset 
+# Plot the hamiltonian 
+set terminal png size 1250,1000 font 'Helvetica,30"
+set output 'Figures/figure_6f.png'
+set xlabel 't'
+set ylabel 'H'
+plot usefile i 2 u 1:2 w p ps 2
+
+reset
+# plot pointcaire
+set terminal png size 1250,1000 font 'Helvetica,30"
+set output 'Figures/figure_6g.png'
+set palette rgbformulae 3,2,2
+set palette model HSV
+set xlabel 'x'
+set ylabel 'z'
+set xrange[0:3]
+unset key
+plot usefile i 3 u 2:3:1 palette
+

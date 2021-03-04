@@ -1,0 +1,39 @@
+# Plot five timesteps to png files for 5a)
+
+usefile = 'Figures/Karumoto_variation/data'
+f(th) = 0.45*(1+cos(th))
+r(th) = f(th)
+g(th) = f(th-(2*pi/3))
+b(th) = f(th+(2*pi/3)) 
+
+set terminal png size 1750,1500 font 'Helvetica,30"
+set output 'problem5a_0.png'
+set xlabel 'x'
+set ylabel 'y'
+set key off
+set size 1,1
+#set xrange[-1.1:1.1]
+#set yrange[-1.1:1.1]
+set cbrange [0:1] 
+set title 'T=0'
+plot usefile i 0 u 1:2:(r($3),g($3),b($3)) with points palette pointtype 7 pointsize 3 linewidth 1 
+
+set terminal png size 1750,1500 font 'Helvetica,30"
+set output 'problem5a_1.png'
+set title 'T=10'
+plot usefile i 1 u 1:2:(r($3),g($3),b($3)) with points palette pointtype 7 pointsize 3 linewidth 1 
+
+set terminal png size 1750,1500 font 'Helvetica,30"
+set output 'problem5a_2.png'
+set title 'T=20'
+plot usefile i 2 u 1:2:(r($3),g($3),b($3)) with points palette pointtype 7 pointsize 3 linewidth 1 
+
+set terminal png size 1750,1500 font 'Helvetica,30"
+set output 'problem5a_3.png'
+set title 'T=50'
+plot usefile i 3 u 1:2:(r($3),g($3),b($3)) with points palette pointtype 7 pointsize 3 linewidth 1 
+
+set terminal png size 1750,1500 font 'Helvetica,30"
+set output 'problem5a_4.png'
+set title 'T=200'
+plot usefile i 4 u 1:2:(r($3),g($3),b($3)) with points palette pointtype 7 pointsize 3 linewidth 1 

@@ -1,0 +1,42 @@
+# plot the output of the RK4 Classic when solving the discontinuous ODE
+
+usedat = 'Data/data_7p'
+
+	set terminal png size 2000,1000 font 'Helvetica,30"
+	set output 'Figures/figure_7a.png'
+	set xlabel 't'
+	set ylabel 'state value'
+	set title 'Classic RK(4) discontinous two component ode demo'
+	set key above vertical maxrows 2
+	plot usedat i 0 u 1:2 with points pt 4 ps 5 lt rgb 'red' t 'x ode solver',\
+		  usedat i 0 u 1:3 with points pt 6 ps 5 lt rgb 'blue' t 'y ode solver',\
+		  usedat i 0 u 1:4 with lines lw 5 lt rgb 'red' t 'x analytic',\
+		  usedat i 0 u 1:5 with lines lw 5 lt rgb 'blue' t 'y analytic'
+	
+reset
+# plot the output of the FSAL RK4(3) when solving the discontinuous ODE
+	set terminal png size 2000,1000 font 'Helvetica,30"
+	set output 'Figures/figure_7b.png'
+	set xlabel 't'
+	set ylabel 'state value'
+	set title 'FSAL RK4(3) discontinous two component ode'
+	set key off
+	plot usedat i 1 u 1:2 with points pt 4 ps 5 lt rgb 'red' t 'x ode_solver',\
+		  usedat i 1 u 1:3 with points pt 6 ps 5 lt rgb 'blue' t 'y ode_solver',\
+		  usedat i 1 u 1:4 with lines lw 5 lt rgb 'red' t 'x analytic',\
+		  usedat i 1 u 1:5 with lines lw 5 lt rgb 'blue' t 'y analytic'
+
+reset
+# plot the work precision graph
+	set terminal png size 2000,1000 font 'Helvetica,30"
+	set output 'Figures/figure_7c.png'	
+	set logscale xy
+	set xrange[*:] reverse
+	set format y "%0.0t*10^{%T}"
+	set format x "%0.0t*10^{%T}"
+	set xlabel 'Fevals'
+	set ylabel 'Error (Euclidean Norm)'
+	set key inside left bottom
+	set title 'Work-Precision Diagram'
+	plot usedat i 2 u 1:2 with linespoints lt rgb 'green' lw 3 pt 4 ps 5  t 'Classic RK4',\
+		  usedat i 3 u 2:3 with linespoints lt rgb 'violet' lw 3 pt 4 ps 5 t 'FSAL RK4(3)'

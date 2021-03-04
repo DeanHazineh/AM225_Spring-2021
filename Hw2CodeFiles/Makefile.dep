@@ -1,0 +1,4 @@
+sol_rk4d.o: sol_rk4d.cc sol_rk4d.hh
+sol_rk4classic.o: sol_rk4classic.cc sol_rk4classic.hh
+sol_IRK5.o: sol_IRK5.cc sol_IRK5.hh
+

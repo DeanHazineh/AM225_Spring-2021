@@ -1,0 +1,9 @@
+Precision--work data for low-order methods
+==========================================
+The four data files here contain the precision--work data for the four
+low-order integration methods that were considered in the lectures: forward
+Euler, Ralston, third-order Heun, and fourth-order Runge--Kutta.
+
+The data uses the Brusselator ODE system. Each file contains two columns: (1)
+the number of function evaluations, and (2) the absolute error from the
+reference solution.
