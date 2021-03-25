@@ -24,7 +24,7 @@ void rbf_test::init_unsortedrandom() {
 including init_hilbert */
 void rbf_test::initPoints(int mode, int hilbertM){
 	if(mode==0) init_unsortedrandom();
-	if(mode==1) init_random();
+	if(mode==1) init_random(); // chris sort by Y from rbf class
 	if(mode==2) init_Hilbert(hilbertM);
 }
 
@@ -59,6 +59,19 @@ void rbf_test::demo_JacobiPCG(int bls){
    copy(x,rs);
 	printf("RBF Solution \n");
 	printVector(rs, n);	
+}
+double rbf_test::timeSolve_JacobiPCG(int mode){
+ 	int l=0;
+   double t0=omp_get_wtime();
+   double t1;	
+   do{
+   	make_table();copy(pf,b);
+   	preconditioning_table(sqrt(n)); //using sqrt(k) bls
+  		solve_pre(false);
+  		t1 = omp_get_wtime();
+  		l++;
+   }while(t1<t0+0.5);
+   return (t1-t0)/l;
 }
 
 void rbf_test::printMatrix(double* mat, int n_){

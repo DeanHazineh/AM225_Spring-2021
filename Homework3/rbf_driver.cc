@@ -14,6 +14,7 @@ void viewRatioSorted();
 void testHilbertArrangement();
 void viewRatioHilbert();
 void testHilbertArrangementSelect(int k, int m);
+void rbfTimePCG();
 
 int main(){
 	/* Do a quick demo of the rbf code */
@@ -28,9 +29,10 @@ int main(){
 	//viewRatioHilbert();
 	
 	/* view selected Hilbert Curves */
-	testHilbertArrangementSelect(100000, 18);
-	//testHilbertArrangementSelect(100000, 10);
-	
+	//testHilbertArrangementSelect(100000, 18);
+
+	/* run time comparison of hilbert vs y sort */
+	 rbfTimePCG();	
 }
 
 
@@ -98,6 +100,16 @@ void testHilbertArrangementSelect(int k, int m){
 	printf("\n"); puts("");
 }
 
+void rbfTimePCG(){
+	for(int mode=0; mode<=2; mode++){ // loop mode 0 = unsorted 1=sorted y and mode 2=sort Hilbert
+		for(int k=10;k<10000;k+=k>>3){
+			rbf_test r(k,2);
+			r.initPoints(mode, 10);//use hilbert order 10 when hilbert mode
+			double tcg = r.timeSolve_JacobiPCG(mode);
+			printf("%d %g \n", k, tcg);
+		}puts("\n");puts("");
+	}
+}
 
 
 

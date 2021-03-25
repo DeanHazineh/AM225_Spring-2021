@@ -9,6 +9,7 @@
 #include<vector> // for vector -- hilbert calculation
 #include <algorithm> // for sorting functionality
 #include "lp_solve.hh"
+#include "omp.h"
 
 class rbf_test : rbf{
 	public: 	
@@ -19,6 +20,7 @@ class rbf_test : rbf{
 		void initPoints(int mode, int hilbertM);
 		void demo_LapackdenseSolver();
 		void demo_JacobiPCG(int bls);
+		double timeSolve_JacobiPCG(int mode);
 		void printMatrix(double* mat, int n_);
 		void printVector(double* vec, int n_);
 		
