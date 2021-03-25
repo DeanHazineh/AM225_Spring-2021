@@ -1,0 +1,54 @@
+
+# Plot Hilbert Sorted arrangement for different order values
+#reset
+#do for [m=0:6]{
+#outfile = sprintf('Figures/figure_HilbertArrangement_1000pt_%01.0d.png',m)
+#set output outfile
+#set terminal png size 1250,1000 font 'Helvetica,30"
+#set palette rgbformulae 3,2,2
+#set palette model HSV
+#set xlabel 'x'
+#set ylabel 'y'
+#set cblabel 'sorted order'
+#unset key 	
+#plot 'Data/TestHilbert' i m u 2:3:1 w p pt 5 ps 2 palette 
+#}
+
+# Plot the Ratio of P to T counts for unsorted and sorted
+reset
+set output 'Figures/figure_ratio_UnsortedVsSorted1.png'
+set terminal png size 1500,1000 font 'Helvetica,30"
+set xlabel 'k'
+set ylabel 'Ratio P(k)/T(k)'
+plot 'Data/UnsortedvsSortedRatio' i 0 u 1:2 w lp lt rgb "red" pt 4 ps 4 lw 4 t 'Unsorted Coordinates',\
+	  'Data/UnsortedvsSortedRatio' i 1 u 1:2 w lp lt rgb "blue" pt 6 ps 4 lw 4 t '1D Cartesian Sorted Coordinates'
+
+reset
+set output 'Figures/figure_ratio_UnsortedVsSorted2.png'
+set terminal png size 1500,1000 font 'Helvetica,30"
+set xlabel 'k'
+set ylabel 'Number Non-Zero Elements'
+plot 'Data/UnsortedvsSortedRatio' i 0 u 1:3 w lp lt rgb "black" pt 4 ps 4 lw 4 t 'Unsorted T(k)',\
+	  'Data/UnsortedvsSortedRatio' i 0 u 1:4 w lp lt rgb "green" pt 5 ps 4 lw 4 t 'Unsorted P(k)',\
+	  'Data/UnsortedvsSortedRatio' i 1 u 1:3 w lp lt rgb "black" pt 6 ps 4 lw 4 t 'Sorted T(k)',\
+	  'Data/UnsortedvsSortedRatio' i 1 u 1:4 w lp lt rgb "green" pt 7 ps 4 lw 4 t 'Sorted P(k)'
+
+
+# Plot the Ratio of P to T counts for Hilbert
+# 0 to 9 m values
+reset
+set output 'Figures/figure_ratio_HilbertSorted1.png'
+set terminal png size 1500,1000 font 'Helvetica,30"
+set xlabel 'k'
+set ylabel 'Ratio P(k)/T(k)'
+set key outside right center box 1 autotitle title "Hilbert Order"
+plot for [m=0:9] 'Data/HilbertFirst10' i m u 1:2 w lp lt m pt 4 ps 4 lw 4 t sprintf('m=%d',m)
+# 10 to 19 m values
+
+reset
+set output 'Figures/figure_ratio_HilbertSorted2.png'
+set terminal png size 1500,1000 font 'Helvetica,30"
+set xlabel 'k'
+set ylabel 'Ratio P(k)/T(k)'
+set key outside right center box 1 autotitle title "Hilbert Order"
+plot for [m=0:9] 'Data/HilbertSecond10' i m u 1:2 w lp lt m pt 4 ps 4 lw 4 t sprintf('m=%d',m+10)

@@ -1,0 +1,16 @@
+
+# Plot Hilbert Sorted arrangement for selected order values
+reset
+do for [d=1:5]{
+m=18
+outfile = sprintf('Figures/hilbertSelect%d_Divide%d.png',m,d)
+set output outfile
+set terminal png size 1250,1000 font 'Helvetica,30"
+set palette rgbformulae 3,2,2
+set palette model HSV
+set xlabel 'x'
+set ylabel 'y'
+set cblabel 'sorted order'
+unset key 	
+plot 'Data/HilbertSelectm18' every ::0::100000/(2**d) u 2:3:1 w p pt 5 ps 2 palette 
+}

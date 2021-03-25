@@ -1,0 +1,6 @@
+StrassenFunctions.o: StrassenFunctions.cc StrassenFunctions.hh
+conj_grad.o: conj_grad.hh conj_grad.cc
+file_output.o: file_output.hh file_output.cc
+rbf.o: rbf.hh rbf.cc
+lp_solve.o: lp_solve.hh lp_solve.cc 
+rbfAnalysis.o: rbfAnalysis.hh rbfAnalysis.cc

@@ -1,0 +1,108 @@
+
+
+*******************************************************************************
+Sat Mar 20 23:33:17 2021
+
+
+FIT:    data read from 'Data/StandardMatMulTime'
+        format = z
+        #datapoints = 10
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a1*x**b1+c1
+fitted parameters initialized with current variable values
+
+ 782 2.8862252785e-02  -3.18e-03  3.19e-06    1.168743e-09   3.007409e+00  -2.249952e-02
+
+After 782 iterations the fit converged.
+final sum of squares of residuals : 0.0288623
+rel. change during last iteration : -3.18089e-08
+
+degrees of freedom    (FIT_NDF)                        : 7
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.064212
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00412318
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a1              = 1.16874e-09      +/- 8.869e-11    (7.589%)
+b1              = 3.00741          +/- 0.009007     (0.2995%)
+c1              = -0.0224995       +/- 0.02355      (104.7%)
+
+correlation matrix of the fit parameters:
+                a1     b1     c1     
+a1              1.000 
+b1             -1.000  1.000 
+c1             -0.387  0.384  1.000 
+
+
+*******************************************************************************
+Sat Mar 20 23:33:17 2021
+
+
+FIT:    data read from 'Data/StrassenMatMulTime'
+        format = z
+        #datapoints = 10
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f2(x)
+	f2(x) = a2*x**b2+c2
+fitted parameters initialized with current variable values
+
+1650 5.2005587400e-04  -1.58e-01  4.18e-06    2.837963e-09   2.806933e+00   3.437599e-03
+
+After 1650 iterations the fit converged.
+final sum of squares of residuals : 0.000520056
+rel. change during last iteration : -1.57515e-06
+
+degrees of freedom    (FIT_NDF)                        : 7
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.00861938
+variance of residuals (reduced chisquare) = WSSR/ndf   : 7.42937e-05
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a2              = 2.83796e-09      +/- 5.474e-11    (1.929%)
+b2              = 2.80693          +/- 0.002291     (0.08163%)
+c2              = 0.0034376        +/- 0.003183     (92.59%)
+
+correlation matrix of the fit parameters:
+                a2     b2     c2     
+a2              1.000 
+b2             -1.000  1.000 
+c2             -0.396  0.392  1.000 
+
+
+*******************************************************************************
+Sat Mar 20 23:33:17 2021
+
+
+FIT:    data read from 'Data/BlasMatMultTimeThreaded'
+        format = z
+        #datapoints = 12
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f3(x)
+	f3(x) = a3*x**b3+c3
+fitted parameters initialized with current variable values
+
+1266 1.4592917470e-01  -1.12e-01  2.18e+00    7.969624e-12   3.019291e+00   9.956009e-02
+
+After 1266 iterations the fit converged.
+final sum of squares of residuals : 0.145929
+rel. change during last iteration : -1.11764e-06
+
+degrees of freedom    (FIT_NDF)                        : 9
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.127336
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0162144
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a3              = 7.96962e-12      +/- 2.8e-12      (35.14%)
+b3              = 3.01929          +/- 0.03568      (1.182%)
+c3              = 0.0995601        +/- 0.04145      (41.63%)
+
+correlation matrix of the fit parameters:
+                a3     b3     c3     
+a3              1.000 
+b3             -1.000  1.000 
+c3             -0.348  0.346  1.000 

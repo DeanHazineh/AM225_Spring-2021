@@ -1,0 +1,51 @@
+
+# Plot the Standard MatMul Time data
+set terminal png size 2000,1000 font 'Helvetica,30"
+set output 'Figures/figure_1a.png'
+
+set fit quiet
+set fit logfile 'Data/LogFit'
+f(x) = a1*x**b1+c1;
+a1 = 1.; b1=3; c1=0.1
+fit f(x) 'Data/StandardMatMulTime' via a1, b1, c1;
+
+f2(x) = a2*x**b2+c2;
+a2=1.; b2= 2.5; c2=0.1;
+fit f2(x) 'Data/StrassenMatMulTime' via a2, b2, c2;
+
+f3(x) = a3*x**b3+c3;
+a3 = .1; b3=3; c3=0.1
+fit f3(x) 'Data/BlasMatMultTimeThreaded' via a3, b3, c3;
+
+set key left top title 'Legend' box 1
+set xlabel 'N Matrix Length'
+set ylabel 'Run Time'
+set xrange[0:4200]
+set yrange[0:100]
+
+plot 'Data/StandardMatMulTime' i 0 u 1:2 w p lt rgb "blue" pt 3 ps 4 lw 3 t 'Standard Mat Mul',\
+	  f(x) w l lt rgb "blue" lw 3 t 'Standard Fit a*N^b+c',\
+	  'Data/StrassenMatMulTime' i 0 u 1:2 w p lt rgb "red" pt 2 ps 4 lw 3 t 'Strassen Mat Mul',\
+	  f2(x) w l lt rgb "red" lw 3 t 'Strassen Fit a*N^b+c',\
+	  'Data/BlasMatMultTimeThreaded' i 0 u 1:2 w p lt rgb "black" pt 2 ps 4 lw 3 t 'Blas Mat Mul',\
+	  f3(x) w l lt rgb "black" lw 3 t 'Blas Fit a*N^b+c'
+
+
+
+##
+set terminal png size 2000,1000 font 'Helvetica,30"
+set output 'Figures/figure_1b.png'
+
+set key left top title 'Legend' box 1
+set xlabel 'N Matrix Length'
+set ylabel 'Run Time'
+set xrange[0:16500]
+set yrange[0:100]
+
+plot 'Data/StandardMatMulTime' i 0 u 1:2 w p lt rgb "blue" pt 3 ps 4 lw 3 t 'Standard Mat Mul',\
+	  f(x) w l lt rgb "blue" lw 3 t 'Standard Fit a*N^b+c',\
+	  'Data/StrassenMatMulTime' i 0 u 1:2 w p lt rgb "red" pt 2 ps 4 lw 3 t 'Strassen Mat Mul',\
+	  f2(x) w l lt rgb "red" lw 3 t 'Strassen Fit a*N^b+c',\
+	  'Data/BlasMatMultTimeThreaded' i 0 u 1:2 w p lt rgb "black" pt 2 ps 4 lw 3 t 'Blas Mat Mul',\
+	  f3(x) w l lt rgb "black" lw 3 t 'Blas Fit a*N^b+c'
+
