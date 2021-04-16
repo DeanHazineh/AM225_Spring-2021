@@ -1,0 +1,24 @@
+## Plot the saved source
+dataSourceReal = 'Out/FFTWSource_real'
+dataSolReal = 'Out/FFTWSol_real'
+dataSolImag = 'Out/FFTWSol_imag'
+
+set output 'Out/FFTWSource_real.png'
+set terminal png size 1250,1000 font 'Helvetica,30"
+set size square
+set pm3d map
+set yrange [:] reverse
+set title "Real Source"
+splot dataSourceReal matrix binary
+
+set output 'Out/FFTWSol_real.png'
+set terminal png size 1250,1000 font 'Helvetica,30"
+set title "Real Sol"
+splot dataSolReal matrix binary
+
+set output 'Out/FFTWSol_imag.png'
+set terminal png size 1250,1000 font 'Helvetica,30"
+set title "Imag Sol"
+splot dataSolImag matrix binary
+
+

@@ -1,0 +1,4 @@
+MRI_BandedFD.o: MRI_BandedFD.hh MRI_BandedFD.cc
+file_output.o: file_output.cc file_output.hh
+MRI_DST_FFTW.o: MRI_DST_FFTW.cc MRI_DST_FFTW.hh
+MRI_DST_FFTW_V2.o: MRI_DST_FFTW_V2.cc MRI_DST_FFTW_V2.hh

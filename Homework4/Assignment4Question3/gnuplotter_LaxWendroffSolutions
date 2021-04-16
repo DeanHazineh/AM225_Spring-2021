@@ -1,0 +1,32 @@
+#https://stackoverflow.com/questions/32458753/gnuplot-2d-plot-of-a-matrix-of-datas
+
+# Plot 2D Data Set
+sol2DData = 'Out/2DSpaceTime'
+set output 'Out/PIC_2D.png'
+set terminal png size 1250,1000 font 'Helvetica,30"
+set notitle 
+set autoscale xfix
+set autoscale yfix
+set autoscale cbfix
+set xlabel 'time from 0 to T'
+set ylabel 'x'
+plot sol2DData matrix nonuniform with image notitle
+
+# Plot the 4 Lines
+reset
+FourLineData = 'Out/4LinesSolution'
+set output 'Out/4Lines.png'
+set terminal png size 1500,1000 font 'Helvetica,30"
+set key autotitle columnhead
+set xlabel "x"
+plot for[col=2:6] FourLineData u 1:col w l lw 5
+
+
+
+# First plot the solution at T
+reset 
+solTData = 'Out/AnalyticSolution'
+set output 'Out/AnalyticSolution.png'
+set terminal png size 1250,1000 font 'Helvetica,30"
+set xlabel "x";
+plot solTData u 1:2 w lp lw 5 ps 3 t 'Analytic Solution Attempt'
