@@ -1,0 +1,93 @@
+numberZslices = 4-1
+
+# Plot Material Distribution
+do for[i=0:numberZslices]{
+	outputPath = sprintf("out/EpsilonMatrix%01d.png",i)
+	set output outputPath
+	set terminal png size 1250,1000 font 'Helvetica,30"
+	set size square
+	set pm3d map
+	
+	datafile=sprintf("out/EpsilonMatrix%01d",i)
+	splot datafile matrix binary
+}
+
+# Plot the current density 
+do for[i=0:numberZslices]{
+	outputPath = sprintf("out/JMatrix%01d.png",i)
+	set output outputPath
+	set terminal png size 1250,1000 font 'Helvetica,30"
+	set size square
+	set pm3d map
+	
+	datafile=sprintf("out/JMatrix%01d",i)
+	splot datafile matrix binary
+}
+
+
+### Plot the Development of A
+# Plot the Ce and Ch Curl Operator Matrices
+outputPath = sprintf("out/Ce_real.png")
+set output outputPath
+set terminal png size 1250,1000 font 'Helvetica,30"
+set size square
+#set pm3d map
+set palette file "-"
+10 0 0 0
+20 0 0 1
+40 0 1 0
+60 1 0 0
+70 1 1 1
+e
+datafile=sprintf("out/Ce_real")
+splot datafile matrix binary
+
+outputPath = sprintf("out/Ce_imag.png")
+set output outputPath
+datafile=sprintf("out/Ce_imag")
+splot datafile matrix binary
+
+outputPath = sprintf("out/Ch_real.png")
+set output outputPath
+datafile=sprintf("out/Ch_real")
+splot datafile matrix binary
+
+outputPath = sprintf("out/Ch_imag.png")
+set output outputPath
+datafile=sprintf("out/Ch_imag")
+splot datafile matrix binary
+
+outputPath = sprintf("out/DeReal.png")
+set output outputPath
+datafile=sprintf("out/DeReal")
+splot datafile matrix binary
+
+outputPath = sprintf("out/Deimag.png")
+set output outputPath
+datafile=sprintf("out/Deimag")
+splot datafile matrix binary
+
+outputPath = sprintf("out/Areal.png")
+set output outputPath
+set palette model HSV
+datafile=sprintf("out/Areal")
+splot datafile matrix binary
+
+outputPath = sprintf("out/Aimag.png")
+set output outputPath
+set palette model HSV
+datafile=sprintf("out/Aimag")
+splot datafile matrix binary
+
+### Plot Solution 
+do for[i=0:numberZslices]{
+	outputPath = sprintf("out/ESol%01d.png",i)
+	set output outputPath
+	set terminal png size 1250,1000 font 'Helvetica,30"
+	set size square
+	set pm3d map
+	
+	datafile=sprintf("out/ESol%01d",i)
+	splot datafile matrix binary
+}
+

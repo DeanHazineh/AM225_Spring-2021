@@ -1,0 +1,25 @@
+numberZslices = 4-1
+# Plot Material Distribution
+do for[i=0:numberZslices]{
+	outputPath = sprintf("out/EpsilonMatrix%01d.png",i)
+	set output outputPath
+	set terminal png size 1250,1000 font 'Helvetica,30"
+	set size square
+	set pm3d map
+	
+	datafile=sprintf("out/EpsilonMatrix%01d",i)
+	splot datafile matrix binary
+}
+
+# Plot the current density 
+do for[i=0:numberZslices]{
+	outputPath = sprintf("out/JMatrix%01d.png",i)
+	set output outputPath
+	set terminal png size 1250,1000 font 'Helvetica,30"
+	set size square
+	set pm3d map
+	
+	datafile=sprintf("out/JMatrix%01d",i)
+	splot datafile matrix binary
+}
+
